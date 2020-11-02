@@ -14,7 +14,7 @@ use Yii;
     <li class="item-lang">
         <?= Html::a(Html::img('/img/flags/en.png', ['width'=>'20']). ' EN', array_merge(
             \Yii::$app->request->get(),
-            ['language' => 'tr']
+            ['language' => 'en']
         )); ?>
     </li>
     <li>

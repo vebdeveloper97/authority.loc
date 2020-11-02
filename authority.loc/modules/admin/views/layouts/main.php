@@ -38,7 +38,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
             <div class="left_col scroll-view">
 
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="<?=Url::to(['/'])?>" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela Alela!</span></a>
+                    <a href="<?=Url::to(['/admin/'])?>" class="site_title"><i class="fa fa-paw"></i> <span><?=Yii::t('app', 'Admin')?></span></a>
                 </div>
                 <div class="clearfix"></div>
 
@@ -64,8 +64,8 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                             [
                                 "items" => [
                                     ["label" => Yii::t('app', 'Users'), "url" => "/admin/user/index", "icon" => "users"],
-                                    ["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
-                                    ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
+                                    ["label" => Yii::t('app', "Message create"), "url" => ["/admin/message/index"], "icon" => "files-o"],
+                                    ["label" => Yii::t('app', 'Categories'), "url" => ["/admin/categories/index"], "icon" => "file"],
                                     [
                                         "label" => "Widgets",
                                         "icon" => "th",
@@ -154,7 +154,6 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
         <!-- top navigation -->
         <div class="top_nav">
-
             <div class="nav_menu">
                 <nav class="" role="navigation">
                     <div class="nav toggle">
@@ -162,6 +161,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                     </div>
 
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <?=\app\widgets\MultiLang\MultiLang::widget(); ?>
+                        </li>
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <img src="http://placehold.it/128x128" alt="">John Doe
