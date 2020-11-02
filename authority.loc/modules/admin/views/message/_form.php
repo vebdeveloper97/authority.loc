@@ -41,9 +41,6 @@ $img = $showImages?$showImages:[];
                     'multiple'=>true,
                 ],
                 'pluginOptions' => [
-                    'showPreview' => true,
-                    'showCaption' => true,
-                    'showRemove' => false,
                     'showUpload' => false,
                     'initialPreview'=> $img,
                     'browseClass' => 'btn btn-success',

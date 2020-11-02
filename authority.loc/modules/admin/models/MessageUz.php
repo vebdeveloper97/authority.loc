@@ -89,25 +89,74 @@ class MessageUz extends BaseModel
         }
     }
 
-    public static function getDataSave($model)
+    public static function getDataSave($model,$id=null)
     {
-        if($model->save()){
+        if($model){
             $transaction = Yii::$app->db->beginTransaction();
             $saved = false;
             try{
                 $images = UploadedFile::getInstances($model, 'images');
-                if(!empty($images)){
+                if($id!=null){
+                    if(!empty($images)){
+                        $imagesOld = MessageAttachmentsUz::find()->where(['message_id' => $id])->all();
+                        if($imagesOld){
+                            foreach ($imagesOld as $item) {
+                                $attachments = $item->attachments;
+                                if($attachments){
+                                    $item->delete();
+                                    $attachments->delete();
+                                }
+                            }
+                        }
+                        foreach ($images as $image) {
+                            $image->saveAs('img/uploads/'.$image->baseName.'.'.$image->extension);
+                            $attachments = new Attachments();
+                            $attachments->setAttributes([
+                                'name' => $image->baseName,
+                                'path' => '/img/uploads/'.$image->baseName.'.'.$image->extension,
+                                'size' => $image->size,
+                                'extension' => $image->extension
+                            ]);
+                            if($attachments->save()){
+                                $messageAttachment = new MessageAttachmentsUz();
+                                $messageAttachment->setAttributes([
+                                    'attachments_id' => $attachments->id,
+                                    'message_id' => $model->id,
+                                ]);
+                                if($messageAttachment->save()){
+                                    $saved = true;
+                                    unset($messageAttachment);
+                                }
+                                else{
+                                    $saved = false;
+                                    break;
+                                }
+
+                                unset($attachments);
+                            }
+                            else{
+                                $saved = false;
+                                break;
+                            }
+                        }
+
+                    }
+
+                }
+                $saved = $model->save()?true:false;
+
+                if(!empty($images) && $saved && $id==null){
                     foreach ($images as $image) {
                         $image->saveAs('img/uploads/'.$image->baseName.'.'.$image->extension);
                         $attachments = new Attachments();
                         $attachments->setAttributes([
                             'name' => $image->baseName,
-                            'path' => 'img/uploads/'.$image->baseName.'.'.$image->extension,
+                            'path' => '/img/uploads/'.$image->baseName.'.'.$image->extension,
                             'size' => $image->size,
                             'extension' => $image->extension
                         ]);
                         if($attachments->save()){
-                            $messageAttachment = new MessageAttachments();
+                            $messageAttachment = new MessageAttachmentsUz();
                             $messageAttachment->setAttributes([
                                 'attachments_id' => $attachments->id,
                                 'message_id' => $model->id,
@@ -126,6 +175,21 @@ class MessageUz extends BaseModel
                         else{
                             $saved = false;
                             break;
+                        }
+                    }
+                }
+                elseif($id!=null && empty($images) && $saved){
+                    $newImages = MessageAttachmentsUz::find()->where(['message_id' => $id])->all();
+                    if($newImages){
+                        foreach ($newImages as $newImage) {
+                            $newImage->message_id = $model->id;
+                            if($newImage->save()){
+                                $saved = true;
+                            }
+                            else{
+                                $saved = false;
+                                break;
+                            }
                         }
                     }
                 }

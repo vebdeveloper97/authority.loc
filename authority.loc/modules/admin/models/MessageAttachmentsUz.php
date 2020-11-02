@@ -3,9 +3,10 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\helpers\VarDumper;
 
 /**
- * This is the model class for table "message_attachments_uz".
+ * This is the model class for table "message_attachments".
  *
  * @property int $id
  * @property int|null $attachments_id
@@ -20,7 +21,8 @@ class MessageAttachmentsUz extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'message_attachments_uz';
+        $lang = Yii::$app->language;
+        return "message_attachments_{$lang}";
     }
 
     /**
@@ -30,7 +32,7 @@ class MessageAttachmentsUz extends \yii\db\ActiveRecord
     {
         return [
             [['attachments_id', 'message_id'], 'integer'],
-            [['attachments_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attachments::className(), 'targetAttribute' => ['attachments_id' => 'id']],
+            [['attachments_id'], 'exist', 'skipOnError' => true, 'targetClass' => Attachments::class, 'targetAttribute' => ['attachments_id' => 'id']],
         ];
     }
 
@@ -54,5 +56,21 @@ class MessageAttachmentsUz extends \yii\db\ActiveRecord
     public function getAttachments()
     {
         return $this->hasOne(Attachments::className(), ['id' => 'attachments_id']);
+    }
+
+    public static function getImages($images)
+    {
+        $result = [];
+        $count = 0;
+        foreach ($images as $key => $image) {
+            $saved = $image->attachments?$image->attachments:false;
+            if($saved){
+                $result[$count] = $saved->path;
+                $count++;
+            }
+        }
+        if(!empty($result))
+            return $result;
+        return false;
     }
 }

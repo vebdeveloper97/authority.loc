@@ -4,6 +4,7 @@ namespace app\modules\admin\controllers;
 
 use app\modules\admin\models\Attachments;
 use app\modules\admin\models\MessageAttachments;
+use app\modules\admin\models\MessageAttachmentsUz;
 use Yii;
 use app\modules\admin\models\MessageUz;
 use app\modules\admin\models\MessageUzSearch;
@@ -61,9 +62,16 @@ class MessageController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $model = $this->findModel($id)?$this->findModel($id):false;
+        if($model){
+            return $this->render('view', [
+                'model' => $model,
+            ]);
+        }
+        else{
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Not found data'));
+            return $this->redirect(Yii::$app->request->referrer);
+        }
     }
 
     /**
@@ -74,7 +82,6 @@ class MessageController extends Controller
     public function actionCreate()
     {
         $model = new MessageUz();
-
         if ($model->load(Yii::$app->request->post())) {
             $saved = MessageUz::getDataSave($model);
 
@@ -83,7 +90,7 @@ class MessageController extends Controller
                 return $this->redirect(['view', 'id' => $saved]);
             }
             else{
-                Yii::$app->session->setFlash('success', "Not saved");
+                Yii::$app->session->setFlash('error', Yii::t("app","Not saved"));
                 return $this->redirect(Yii::$app->request->referrer);
             }
         }
@@ -106,13 +113,21 @@ class MessageController extends Controller
 
         if($model){
             $model->date = date('d.m.Y', strtotime($model->date));
-            $images = MessageAttachments::find()->where(['message_id' => $model->id])->all();
+            $images = MessageAttachmentsUz::find()->where(['message_id' => $model->id])->all();
             if($images){
-                $showImages = MessageAttachments::getImages($images);
+                $showImages = MessageAttachmentsUz::getImages($images);
             }
+            if ($model->load(Yii::$app->request->post())){
+                $saved = MessageUz::getDataSave($model,$id);
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                if($saved){
+                    Yii::$app->session->setFlash('success', "{$id} - raqamli xabar yangilandi!");
+                    return $this->redirect(['view', 'id' => $saved]);
+                }
+                else{
+                    Yii::$app->session->setFlash('error', Yii::t("app","Not saved"));
+                    return $this->redirect(Yii::$app->request->referrer);
+                }
             }
 
             return $this->render('update', [
@@ -136,6 +151,16 @@ class MessageController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        $model = MessageAttachmentsUz::find()->where(['message_id' => $id])->all();
+        if($model){
+            foreach ($model as $item) {
+                $attachments = $item->attachments;
+                if($attachments){
+                    $item->delete();
+                    $attachments->delete();
+                }
+            }
+        }
 
         return $this->redirect(['index']);
     }

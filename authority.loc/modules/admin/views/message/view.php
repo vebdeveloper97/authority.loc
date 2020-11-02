@@ -45,6 +45,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 }
             ],
+            [
+                'attribute' => 'images',
+                'value' => function($model){
+                    $imgs = \app\modules\admin\models\MessageAttachmentsUz::find()->where(['message_id' => $model->id])->all();
+                    if($imgs){
+                        $str = "<div>";
+                        foreach ($imgs as $img) {
+                            $path = $img->attachments->path;
+                             $str .= "<img width='50px' height='50px' src='".$path."'> ";
+                        }
+                        $str .= "</div>";
+                        return $str;
+                    }
+                },
+                'format' => 'html'
+            ],
             'status',
             [
                 'attribute' => 'created_at',
