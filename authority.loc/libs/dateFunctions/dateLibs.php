@@ -9,4 +9,3 @@
         }
         return $minut.' minut';
     }
-
