@@ -18,8 +18,23 @@ $config = [
             'layout' => 'main',
             'defaultRoute' => 'site/index',
         ],
+        'gridview' => [
+            'class' => 'kartik\grid\Module',
+            'i18n' => [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => '@app/messages',
+                'forceTranslation' => true
+            ]
+        ]
     ],
     'components' => [
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'd.m.Y',
+            'datetimeFormat' => 'd.m.Y H:i:s',
+            'timeFormat' => 'H:i:s',
+            'nullDisplay' => '',
+        ],
         'i18n' => [
             'translations' => [
                 'yii2mod.rbac' => [
@@ -29,7 +44,7 @@ $config = [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@app/messages',
-                    'sourceLanguage' => 'uz',
+                    'sourceLanguage' => 'uz-UZ',
                     'fileMap' => [
                         'app' => 'app.php',
                         'app/auth' => 'auth.php'
@@ -87,8 +102,8 @@ $config = [
             'enableLanguageDetection' => false,
             'enableDefaultLanguageUrlCode' => true,
             'rules' => [
-                '<controller:\w+>/<action\w:+>' => '<controller>/<action>',
                 '<module:\w+>/<controller:\w+>/<action(\w|-)+>/<id:\d+>' => '<module>/<controller>/<action>',
+                '<controller:\w+>/<action\w:+>' => '<controller>/<action>',
             ],
         ],
     ],

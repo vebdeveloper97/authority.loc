@@ -49,7 +49,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>John Doe</h2>
+                        <h2>Umar Ibn Hattob</h2>
                     </div>
                 </div>
                 <!-- /menu prile quick info -->
@@ -67,12 +67,11 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                     ["label" => Yii::t('app', "Message create"), "url" => ["/admin/message/index"], "icon" => "files-o"],
                                     ["label" => Yii::t('app', 'Categories'), "url" => ["/admin/categories/index"], "icon" => "file"],
                                     [
-                                        "label" => "Widgets",
+                                        "label" => Yii::t('app', "Reference"),
                                         "icon" => "th",
                                         "url" => "#",
                                         "items" => [
-                                            ["label" => "Menu", "url" => ["site/menu"]],
-                                            ["label" => "Panel", "url" => ["site/panel"]],
+                                            ["label" => Yii::t('app', 'Reference'), "url" => ["/admin/reference/index"]],
                                         ],
                                     ],
                                     [
@@ -181,7 +180,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                 <li>
                                     <a href="javascript:;">Help</a>
                                 </li>
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                <li><a href="<?=Url::to(['/admin/site/logout'])?>"><i class="fa fa-sign-out pull-right"></i><?=Yii::t('app', ' Logout')?></a>
                                 </li>
                             </ul>
                         </li>

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Reference;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
@@ -13,6 +14,20 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public $allReference;
+    public $allComplate;
+    public $allContinued;
+
+    public function __construct($id, $module, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+
+        $this->allReference = Reference::find()->count();
+        $this->allComplate = Reference::find()->where(['status' => 3])->count();
+        $this->allContinued = Reference::find()->where(['status' => 2])->count();
+
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -106,10 +121,9 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        $model = new Reference();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
         return $this->render('contact', [

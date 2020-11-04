@@ -22,7 +22,9 @@
         "unclead/yii2-multiple-input": "~2.0",
         "yiister/yii2-gentelella": "~1.0",
         "kartik-v/yii2-widget-fileinput": "*",
-        "kartik-v/yii2-widget-select2": "@dev"
+        "kartik-v/yii2-widget-select2": "@dev",
+        "kartik-v/yii2-editable": "*",
+        "kartik-v/yii2-grid": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
