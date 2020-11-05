@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "evaluation_uz".
@@ -11,14 +12,14 @@ use Yii;
  * @property string $name
  * @property int|null $status
  */
-class EvaluationUz extends \yii\db\ActiveRecord
+class EvaluationUz extends ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'evaluation_uz';
+        return 'evaluation_'.Yii::$app->language;
     }
 
     /**

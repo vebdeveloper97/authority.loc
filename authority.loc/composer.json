@@ -24,7 +24,9 @@
         "kartik-v/yii2-widget-fileinput": "*",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-editable": "*",
-        "kartik-v/yii2-grid": "*"
+        "kartik-v/yii2-grid": "*",
+        "hiqdev/yii2-pnotify": "*",
+        "richardfan1126/yii2-js-register": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

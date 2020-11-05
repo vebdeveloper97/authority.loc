@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Reference;
+use app\modules\admin\models\EvaluationStatus;
+use app\modules\admin\models\EvaluationUz;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
@@ -14,18 +16,17 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    public $allReference;
-    public $allComplate;
-    public $allContinued;
+    public $ip;
 
     public function __construct($id, $module, $config = [])
     {
         parent::__construct($id, $module, $config);
-
-        $this->allReference = Reference::find()->count();
-        $this->allComplate = Reference::find()->where(['status' => 3])->count();
-        $this->allContinued = Reference::find()->where(['status' => 2])->count();
-
+        $this->ip = Yii::$app->request->userIP;
+        $this->view->params['allReference'] = Reference::find()->count();
+        $this->view->params['allComplate'] = Reference::find()->where(['status' => 3])->count();
+        $this->view->params['allContinued'] = Reference::find()->where(['status' => 2])->count();
+        $this->view->params['isTrue'] = EvaluationStatus::find()->where(['ip_address' => $this->ip])->all()?true:false;
+        $this->view->params['spravish'] = EvaluationUz::find()->asArray()->all();
     }
 
     /**
@@ -139,5 +140,28 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionSaveAjax()
+    {
+        if(Yii::$app->request->isAjax){
+            $name = Yii::$app->request->get('name');
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $response['status'] = false;
+            $model = new EvaluationStatus();
+            $model->setAttributes([
+                'ip_address' => Yii::$app->request->userIP,
+                'evaluation_id' => $name,
+                'status' => 1
+            ]);
+            if($model->save()){
+                $response['data'] = $model;
+                $response['status'] = true;
+            }
+            return $response;
+        }
+        else{
+            return Yii::$app->request->referrer;
+        }
     }
 }

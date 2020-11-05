@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa233d110eb722cdcb5052bd7738194d",
+    "content-hash": "c5fd10b4dd4e54271040f27ab8ef6493",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -85,6 +85,26 @@
             ]
         },
         {
+            "name": "bower-asset/pnotify",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:sciactive/pnotify.git",
+                "reference": "4ca6d8089ec45997ae7be37efc51f1ddad336933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sciactive/pnotify/zipball/4ca6d8089ec45997ae7be37efc51f1ddad336933",
+                "reference": "4ca6d8089ec45997ae7be37efc51f1ddad336933"
+            },
+            "type": "bower-asset",
+            "license": [
+                "GPL-3.0",
+                "LGPL-3.0",
+                "MPL-1.1"
+            ]
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -104,7 +124,7 @@
             "version": "v2.0.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/jquery-pjax.git",
+                "url": "git@github.com:yiisoft/jquery-pjax.git",
                 "reference": "885fc8c2d36c93a801b6af0ee8ad55d79df97cb1"
             },
             "dist": {
@@ -415,6 +435,156 @@
                 "source": "https://github.com/FortAwesome/Font-Awesome/tree/v4.7.0"
             },
             "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "hiqdev/yii2-asset-pnotify",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hiqdev/yii2-asset-pnotify.git",
+                "reference": "d5bfa39fba84741523238e53b85ef7c2f37b789f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hiqdev/yii2-asset-pnotify/zipball/d5bfa39fba84741523238e53b85ef7c2f37b789f",
+                "reference": "d5bfa39fba84741523238e53b85ef7c2f37b789f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/pnotify": "2.1.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "hiqdev\\assets\\pnotify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrii Vasyliev",
+                    "email": "sol@hiqdev.com",
+                    "homepage": "https://hipanel.com/",
+                    "role": "Project lead"
+                },
+                {
+                    "name": "Andrey Klochok",
+                    "email": "tafid@hiqdev.com",
+                    "homepage": "https://hiqdev.com/",
+                    "role": "Lead frontend developer"
+                },
+                {
+                    "name": "Yuriy Myronchuk",
+                    "email": "bladeroot@hiqdev.com",
+                    "homepage": "https://hiqdev.com/",
+                    "role": "QA Lead"
+                },
+                {
+                    "name": "Dmitry Naumenko",
+                    "email": "silverfire@hiqdev.com",
+                    "homepage": "http://silverfire.me/",
+                    "role": "Lead backend developer"
+                }
+            ],
+            "description": "Yii2 Asset Pnotify",
+            "homepage": "https://github.com/hiqdev/yii2-asset-pnotify",
+            "keywords": [
+                "asset",
+                "pnotify",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@hiqdev.com",
+                "forum": "https://forum.hiqdev.com/",
+                "issues": "https://github.com/hiqdev/yii2-asset-pnotify/issues",
+                "source": "https://github.com/hiqdev/yii2-asset-pnotify",
+                "wiki": "https://github.com/hiqdev/yii2-asset-pnotify/wiki"
+            },
+            "time": "2015-09-09T15:16:38+00:00"
+        },
+        {
+            "name": "hiqdev/yii2-pnotify",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hiqdev/yii2-pnotify.git",
+                "reference": "2a550917e5d2a7ef12a5824491b4989ac65648ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hiqdev/yii2-pnotify/zipball/2a550917e5d2a7ef12a5824491b4989ac65648ea",
+                "reference": "2a550917e5d2a7ef12a5824491b4989ac65648ea",
+                "shasum": ""
+            },
+            "require": {
+                "hiqdev/yii2-asset-pnotify": "*",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
+            },
+            "require-dev": {
+                "hiqdev/hidev-hiqdev": "<2.0",
+                "hiqdev/hidev-php": "<2.0",
+                "yiisoft/yii2": "dev-master",
+                "yiisoft/yii2-bootstrap": "dev-master"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "config-plugin": {
+                    "web": "src/config/web.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "hiqdev\\pnotify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrii Vasyliev",
+                    "email": "sol@hiqdev.com",
+                    "homepage": "http://hipanel.com/",
+                    "role": "Project lead"
+                },
+                {
+                    "name": "Dmitry Naumenko",
+                    "email": "d.naumenko.a@gmail.com",
+                    "homepage": "http://silverfire.me/",
+                    "role": "Lead backend developer"
+                },
+                {
+                    "name": "Andrey Klochok",
+                    "email": "andreyklochok@gmail.com",
+                    "homepage": "http://hiqdev.com/",
+                    "role": "Lead frontend developer"
+                },
+                {
+                    "name": "Yuriy Myronchuk",
+                    "email": "bladeroot@gmail.com",
+                    "homepage": "http://hiqdev.com/",
+                    "role": "QA Lead"
+                }
+            ],
+            "description": "Yii2 adapter for PNotify JQuery extension",
+            "homepage": "https://github.com/hiqdev/yii2-pnotify",
+            "keywords": [
+                "jquery",
+                "pnotify",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@hiqdev.com",
+                "forum": "https://forum.hiqdev.com/",
+                "issues": "https://github.com/hiqdev/yii2-pnotify/issues",
+                "source": "https://github.com/hiqdev/yii2-pnotify",
+                "wiki": "https://github.com/hiqdev/yii2-pnotify/wiki"
+            },
+            "time": "2017-05-05T16:27:27+00:00"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
@@ -1075,7 +1245,6 @@
                 "kartik-v/yii2-krajee-base": ">=1.9",
                 "select2/select2": ">=4.0"
             },
-            "default-branch": true,
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {
@@ -1110,10 +1279,6 @@
                 "widget",
                 "yii2"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/yii2-widget-select2/issues",
-                "source": "https://github.com/kartik-v/yii2-widget-select2/tree/master"
-            },
             "funding": [
                 {
                     "url": "https://opencollective.com/yii2-widget-select2",
@@ -1121,6 +1286,49 @@
                 }
             ],
             "time": "2020-09-29T08:00:46+00:00"
+        },
+        {
+            "name": "richardfan1126/yii2-js-register",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/richardfan1126/yii2-js-register.git",
+                "reference": "e6a49b1523942c0a861bfa9f5cf7371e3bfd94f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/richardfan1126/yii2-js-register/zipball/e6a49b1523942c0a861bfa9f5cf7371e3bfd94f9",
+                "reference": "e6a49b1523942c0a861bfa9f5cf7371e3bfd94f9",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "richardfan\\widget\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Richard Fan",
+                    "email": "richardfan1126@gmail.com",
+                    "homepage": "https://fancy-digital.com"
+                }
+            ],
+            "description": "Yii2 widget to register JS into view",
+            "keywords": [
+                "extension",
+                "javascript",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-06-29T17:28:49+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -5809,5 +6017,5 @@
         "php": ">=5.6.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

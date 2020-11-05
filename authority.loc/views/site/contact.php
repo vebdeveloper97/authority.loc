@@ -10,6 +10,7 @@ use yii\captcha\Captcha;
 
 $this->title = Yii::t('app', 'Reference');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -25,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>
             <?=Yii::t('app', 'Fill out the form to submit an application')?>
         </p>
-
         <div class="row">
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
             <div class="col-lg-6">
@@ -55,23 +55,23 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-6">
             <h3><?=Yii::t('app', 'References status')?></h3>
             <div class="progress progress-striped" title="<?=Yii::t('app', 'Complate')?>">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="200" style="width: 40%">
-                    <strong style="color: #1a1a1a">40% <?=Yii::t('app', 'Complate')?></strong>
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?=\app\models\Reference::find()->where(['status' => 3])->count()?>" aria-valuemin="0" aria-valuemax="200" style="width: <?=\app\models\Reference::find()->where(['status' => 3])->count()?>%">
+                    <strong style="color: #1a1a1a"><?=\app\models\Reference::find()->where(['status' => 3])->count()?>% <?=Yii::t('app', 'Complate')?></strong>
                 </div>
             </div>
             <div class="progress progress-striped" title="<?=Yii::t('app', 'Active')?>">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                    <strong style="color: #1a1a1a">20% <?=Yii::t('app', 'Active')?></strong>
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?=\app\models\Reference::find()->where(['status' => 1])->count()?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=\app\models\Reference::find()->where(['status' => 1])->count()?>%">
+                    <strong style="color: #1a1a1a"><?=\app\models\Reference::find()->where(['status' => 1])->count()?>% <?=Yii::t('app', 'Active')?></strong>
                 </div>
             </div>
             <div class="progress progress-striped" title="<?=Yii::t('app', 'Continued')?>">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                    <strong style="color: #1a1a1a">60% <?=Yii::t('app', 'Continued')?></strong>
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<?=\app\models\Reference::find()->where(['status' => 2])->count()?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=\app\models\Reference::find()->where(['status' => 2])->count()?>%">
+                    <strong style="color: #1a1a1a"><?=\app\models\Reference::find()->where(['status' => 2])->count()?>% <?=Yii::t('app', 'Continued')?></strong>
                 </div>
             </div>
             <div class="progress progress-striped" title="<?=Yii::t('app', 'All references')?>">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                    <strong style="color: #1a1a1a">60% <?=Yii::t('app', 'All references')?></strong>
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?=\app\models\Reference::find()->count()?>" aria-valuemin="0" aria-valuemax="100" style="width: <?=\app\models\Reference::find()->count()?>%">
+                    <strong style="color: #1a1a1a"><?=\app\models\Reference::find()->count()?>% <?=Yii::t('app', 'All references')?></strong>
                 </div>
             </div>
         </div>

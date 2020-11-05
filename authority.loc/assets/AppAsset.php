@@ -21,8 +21,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/pnotify.css',
     ];
     public $js = [
+        'js/PNotify5/core/PNotify.js',
+        'js/CustomPnotify/CustomPnotify.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
