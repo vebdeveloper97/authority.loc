@@ -1,14 +1,11 @@
 <?php
+/* @var $model \app\modules\admin\models\CategoriesUz */
 
-/* @var $this yii\web\View */
-
-use yii\helpers\VarDumper;
 use yii\widgets\LinkPager;
 
-$this->title = 'My Yii Application';
 ?>
-<?php if(!empty($this->params['messages'])): ?>
-    <?php foreach($this->params['messages'] as $key => $val): ?>
+<?php if(!empty($model)): ?>
+    <?php foreach($model as $key => $val): ?>
         <div class="col-lg-3">
             <div class="thumbnail" style="height: 450px;">
                 <img src="<?=\yii\helpers\Url::base().$val['path']?>" style="height: 200px; width: 100%;" alt="">
@@ -20,6 +17,12 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     <?php endforeach; ?>
+<?php else: ?>
+    <div class="col-lg-3">
+        <div class="alert alert-danger">
+            <?=Yii::t('app', 'Data Not Found'); ?>
+        </div>
+    </div>
 <?php endif; ?>
 <?php
 echo LinkPager::widget([

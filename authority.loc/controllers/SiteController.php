@@ -3,9 +3,13 @@
 namespace app\controllers;
 
 use app\models\Reference;
+use app\modules\admin\models\AboutUz;
+use app\modules\admin\models\CategoriesUz;
 use app\modules\admin\models\EvaluationStatus;
 use app\modules\admin\models\EvaluationUz;
+use app\modules\admin\models\MessageUz;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
@@ -21,12 +25,64 @@ class SiteController extends Controller
     public function __construct($id, $module, $config = [])
     {
         parent::__construct($id, $module, $config);
+
         $this->ip = Yii::$app->request->userIP;
         $this->view->params['allReference'] = Reference::find()->count();
         $this->view->params['allComplate'] = Reference::find()->where(['status' => 3])->count();
         $this->view->params['allContinued'] = Reference::find()->where(['status' => 2])->count();
         $this->view->params['isTrue'] = EvaluationStatus::find()->where(['ip_address' => $this->ip])->all()?true:false;
         $this->view->params['spravish'] = EvaluationUz::find()->asArray()->all();
+
+        $lang = Yii::$app->language;
+        $modelUz = MessageUz::find()
+            ->alias('m')
+            ->select(['m.id', 'm.title', 'm.author', 'm.content', 'm.date', 'a.path'])
+            ->leftjoin("message_attachments_{$lang} as client", 'm.id = client.message_id')
+            ->leftJoin("attachments as a", 'a.id = client.attachments_id')
+            ->where(['m.status' => 1, 'm.top' => false])
+            ->asArray()
+            ->groupBy('client.id');
+        $countQuery = clone $modelUz;
+        $pages = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $countQuery->count()
+        ]);
+        $models = $modelUz
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        $this->view->params['messages'] = $models;
+        $this->view->params['pages'] = $pages;
+
+        $this->view->params['top'] = MessageUz::find()
+            ->alias('m')
+            ->select(['m.id', 'm.title', 'm.author', 'm.content', 'm.date', 'a.path'])
+            ->leftjoin("message_attachments_{$lang} as client", 'm.id = client.message_id')
+            ->leftJoin("attachments as a", 'a.id = client.attachments_id')
+            ->where(['m.status' => 1, 'm.top' => true])
+            ->limit(6)
+            ->asArray()
+            ->all();
+
+        $this->view->params['alo'] = EvaluationStatus::find()
+            ->where(['evaluation_id' => 1])
+            ->count();
+        $this->view->params['yaxshi'] = EvaluationStatus::find()
+            ->where(['evaluation_id' => 2])
+            ->count();
+        $this->view->params['qoniqarli'] = EvaluationStatus::find()
+            ->where(['evaluation_id' => 3])
+            ->count();
+        $this->view->params['qoniqarsiz'] = EvaluationStatus::find()
+            ->where(['evaluation_id' => 4])
+            ->count();
+        $this->view->params['yomon'] = EvaluationStatus::find()
+            ->where(['evaluation_id' => 5])
+            ->count();
+
+        $this->view->params['about'] = AboutUz::find()->all();
+
     }
 
     /**
@@ -163,5 +219,114 @@ class SiteController extends Controller
         else{
             return Yii::$app->request->referrer;
         }
+    }
+
+    public function actionNews(){
+        $id = Yii::$app->request->get('id');
+        $message = MessageUz::findOne($id);
+        if($message){
+            return $this->render('news', [
+                'message' => $message
+            ]);
+        }
+        else{
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Not Found'));
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
+
+    public function actionSearch(){
+        $name = Yii::$app->request->get('search');
+        if(isset($name) && !empty($name)){
+            $lang = Yii::$app->language;
+            $model = MessageUz::find()
+                ->alias('m')
+                ->select(['m.id', 'm.title', 'm.author', 'm.content', 'm.date', 'a.path'])
+                ->leftjoin("message_attachments_{$lang} as client", 'm.id = client.message_id')
+                ->leftJoin("attachments as a", 'a.id = client.attachments_id')
+                ->where(['m.status' => 1])
+                ->andWhere(['like', 'title', $name])
+                ->limit(12)
+                ->asArray()
+                ->all();
+            if(!empty($model)){
+                return $this->render('search', [
+                    'model' => $model
+                ]);
+            }
+            else{
+                return $this->render('error1', [
+                    'model' => $name
+                ]);
+            }
+        }
+        else{
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Variable not found'));
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+    }
+
+    public function actionNewsAll()
+    {
+        $action = Yii::$app->controller->action->id;
+        $action = ($action == 'news-all') ? 'Yangiliklar' : $action;
+        $category = CategoriesUz::find()
+            ->where(['name' => $action])
+            ->one();
+
+        $lang = Yii::$app->language;
+        $modelUz = MessageUz::find()
+            ->alias('m')
+            ->select(['m.id', 'm.title', 'm.author', 'm.content', 'm.date', 'a.path'])
+            ->leftjoin("message_attachments_{$lang} as client", 'm.id = client.message_id')
+            ->leftJoin("attachments as a", 'a.id = client.attachments_id')
+            ->where(['m.type' => $category['id']])
+            ->asArray()
+            ->groupBy('client.id');
+        $countQuery = clone $modelUz;
+        $pages = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $countQuery->count()
+        ]);
+        $model = $modelUz
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('news-all',[
+            'model' => $model
+        ]);
+    }
+
+    public function actionDistricts()
+    {
+        $action = Yii::$app->controller->action->id;
+        $action = ($action == 'districts') ? 'Tumanlar' : $action;
+        $category = CategoriesUz::find()
+            ->where(['name' => $action])
+            ->one();
+
+        $lang = Yii::$app->language;
+        $modelUz = MessageUz::find()
+            ->alias('m')
+            ->select(['m.id', 'm.title', 'm.author', 'm.content', 'm.date', 'a.path'])
+            ->leftjoin("message_attachments_{$lang} as client", 'm.id = client.message_id')
+            ->leftJoin("attachments as a", 'a.id = client.attachments_id')
+            ->where(['m.type' => $category['id']])
+            ->asArray()
+            ->groupBy('client.id');
+        $countQuery = clone $modelUz;
+        $pages = new Pagination([
+            'defaultPageSize' => 9,
+            'totalCount' => $countQuery->count()
+        ]);
+        $model = $modelUz
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('districts',[
+            'model' => $model
+        ]);
     }
 }

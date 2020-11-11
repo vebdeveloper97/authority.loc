@@ -45,6 +45,7 @@ class MessageUz extends BaseModel
             [['type', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['title', 'author'], 'string', 'max' => 100],
             [['images'], 'file', 'maxFiles' => 10, 'minFiles' => 1],
+            [['top'], 'boolean']
         ];
     }
 
@@ -66,6 +67,7 @@ class MessageUz extends BaseModel
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
             'updated_by' => Yii::t('app', 'Updated By'),
+            'top' => Yii::t('app', 'Top qilib belgilash'),
         ];
     }
     /**

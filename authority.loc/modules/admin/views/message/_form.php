@@ -50,7 +50,7 @@ $img = $showImages?$showImages:[];
 
             ]) ?>
         </div>
-        <div class="col-sm-12">
+        <div class="col-sm-6">
             <?= $form->field($model, 'type')->widget(Select2::class, [
                 'data' => \yii\helpers\ArrayHelper::map(\app\modules\admin\models\CategoriesUz::find()->all(), 'id', 'name'),
                 'language' => 'de',
@@ -60,6 +60,14 @@ $img = $showImages?$showImages:[];
                 ],
 
             ]) ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'top')->widget(Select2::class, [
+                'data' => ['1' => 'Top qilib belgilansin', '0' => 'Top emas'],
+                'pluginOptions' => [
+                        'placeholder' => Yii::t('app', 'Select...')
+                ]
+            ])?>
         </div>
     </div>
 

@@ -56,22 +56,49 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                 <br />
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
+                    <?php
+                        $controller = Yii::$app->controller->id;
+                    ?>
                     <div class="menu_section">
                         <h3>General</h3>
                         <?=
                         \yiister\gentelella\widgets\Menu::widget(
                             [
                                 "items" => [
-                                    ["label" => Yii::t('app', 'Users'), "url" => "/admin/user/index", "icon" => "users"],
-                                    ["label" => Yii::t('app', "Message create"), "url" => ["/admin/message/index"], "icon" => "files-o"],
-                                    ["label" => Yii::t('app', 'Categories'), "url" => ["/admin/categories/index"], "icon" => "file"],
+                                    [
+                                        "label" => Yii::t('app', 'Users'),
+                                        "url" => "/admin/user/index",
+                                        "icon" => "users",
+                                        "active" => $controller == "user"
+                                    ],
+                                    [
+                                        "label" => Yii::t('app', "Message create"),
+                                        "url" => ["/admin/message/index"],
+                                        "icon" => "files-o",
+                                        "active" => $controller == "message"
+                                    ],
+                                    [
+                                        "label" => Yii::t('app', 'Categories'),
+                                        "url" => ["/admin/categories/index"],
+                                        "icon" => "file",
+                                        "active" => $controller == "categories"
+                                    ],
+                                    [
+                                        "label" => Yii::t('app', 'About'),
+                                        "url" => ["/admin/about-uz/index"],
+                                        "icon" => "info",
+                                        "active" => $controller == "about-uz"
+                                    ],
                                     [
                                         "label" => Yii::t('app', "Reference"),
                                         "icon" => "th",
                                         "url" => "#",
                                         "items" => [
-                                            ["label" => Yii::t('app', 'Reference'), "url" => ["/admin/reference/index"]],
+                                            [
+                                                "label" => Yii::t('app', 'Reference'),
+                                                "url" => ["/admin/reference/index"],
+                                                "active" => $controller == 'reference'
+                                            ],
                                         ],
                                     ],
                                     [
