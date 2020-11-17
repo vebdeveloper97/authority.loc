@@ -219,7 +219,7 @@ AppAsset::register($this);
                     <strong><a href="#" class="default">A</a></strong>
                 </li>
                 <li>
-                    <strong><a href="#" class="minus">A++</a></strong>
+                    <strong><a href="#" class="minus">A--</a></strong>
                 </li>
             </ul>
         </div>
