@@ -1,0 +1,126 @@
+http://213.230.127.153:9000 - GLOBAL
+http://192.168.111.11 - LOCAL
+
+
+URL : /api/v1/products/pack
+
+POST
+{
+	"user": "SAMO-API-USER",
+	"password":"samo-api-password"
+}
+
+Result:
+
+{
+    "status": true,
+    "message": "OK",
+	"data": [
+
+      			{
+                    "id": "14",
+                    "doc_number": "TK12/2019",
+                    "reg_date": "2019-11-09 02:02:23",
+                    "department": "TMO"
+			    },
+			    {
+                    "id": "13",
+                    "doc_number": "TK12/2019",
+                    "reg_date": "2019-11-09 01:46:25",
+                    "department": "TMO"
+			    }
+		],
+		"total": "2",
+		"auth": {
+				"user": "SAMO-API-USER",
+				"password": "samo-api-password"
+			}
+}
+
+URL: /api/v1/products/list
+
+POST
+{
+	"user": "SAMO-API-USER",
+	"password":"samo-api-password",
+	"id":14
+}
+// Bu yerda type:
+// 1 -maxsulot
+// 2 -paket
+// 3 -Blok
+// 4 -Qop
+
+RESULT:
+{
+    "status": true,
+    "message": "OK",
+    "data": [
+        {
+            "gname": "(Qop)-m12 - 11-4001 TPG - (2-3,3-4,5-6,6-7,7-8) - 25 шт.",
+            "quantity": "20.000",
+            "volume": "25.000",
+            "type": "4",
+            "gid": "223",
+            "size_collection": "2-3,3-4,5-6,6-7,7-8",
+            "color_collection": "11-4001 TPG",
+            "price": null,
+            "currency": "USD",
+            "barcode": "100000067",
+            "barcode1": null,
+            "barcode2": null,
+            "model_no": "m12",
+            "sizeName": null,
+            "sizeCode": null,
+            "color": null,
+            "colorName": null
+        },
+        {
+            "gname": "Moscow",
+            "quantity": "20.000",
+            "volume": null,
+            "type": "1",
+            "gid": "54",
+            "size_collection": null,
+            "color_collection": null,
+            "price": null,
+            "currency": "USD",
+            "barcode": "100000030",
+            "barcode1": null,
+            "barcode2": null,
+            "model_no": "m12",
+            "sizeName": "5-6",
+            "sizeCode": "5-6",
+            "color": "11-4001 TPG",
+            "colorName": "Brilliant White"
+        },
+        {
+            "gname": "Moscow",
+            "quantity": "15.000",
+            "volume": null,
+            "type": "1",
+            "gid": "53",
+            "size_collection": null,
+            "color_collection": null,
+            "price": null,
+            "currency": "USD",
+            "barcode": "100000029",
+            "barcode1": null,
+            "barcode2": null,
+            "model_no": "m12",
+            "sizeName": "3-4",
+            "sizeCode": "3-4",
+            "color": "11-4001 TPG",
+            "colorName": "Brilliant White"
+        }
+    ],
+    "total": "3",
+    "auth": {
+        "user": "SAMO-API-USER",
+        "password": "samo-api-password",
+        "id": 13
+    }
+}
+
+Qop ichdagi item larni ko'rish buni qilib beraman
+

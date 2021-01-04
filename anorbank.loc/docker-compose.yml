@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: belt-master-nginx
+    image: nginx:1.18
+    environment:
+      TZ: "Asia/Tashkent"
+    ports:
+      - 80:80
+      - 81:81
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - php
+
+  php:
+    container_name: belt-master-php
+    build:
+      context: ./
+      dockerfile: ./docker/php-fpm/Dockerfile
+    environment:
+      TZ: "Asia/Tashkent"
+    ports:
+      - 9001:9001
+    restart: always
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php-fpm/php-${MODE}.ini:/usr/local/etc/php/php.ini
+
+  db:
+    image: library/postgres:12-alpine
+    container_name: belt-master-postgresql
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: belt_master
+      TZ: 'GMT+5'
+      PGTZ: 'GMT+5'
+    volumes:
+      - ./runtime/postgresql:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis:latest
+    container_name: belt-master-redis
+    hostname: redis
+    command: [ "redis-server", "--appendonly", "yes" ]
+    volumes:
+      - ./runtime/redis:/data
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - TZ=Asia/Tashkent
+    ports:
+      - 6379:6379

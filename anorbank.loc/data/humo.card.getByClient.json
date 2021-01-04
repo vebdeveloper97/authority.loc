@@ -1,0 +1,142 @@
+{
+  "params": {
+    "row": [
+      {
+        "item": [
+          {
+            "name": "CARD",
+            "value": "986009HDEQJE5859"
+          },
+          {
+            "name": "CARD_TYPE",
+            "value": "01"
+          },
+          {
+            "name": "EXPIRY1",
+            "value": "2025-01-31T00:00:00"
+          },
+          {
+            "name": "BASE_SUPP",
+            "value": "1"
+          },
+          {
+            "name": "COND_SET",
+            "value": "001"
+          },
+          {
+            "name": "AGREEMENT_KEY",
+            "value": "6034"
+          },
+          {
+            "name": "RISK_LEVEL",
+            "value": "A"
+          },
+          {
+            "name": "STATUS1",
+            "value": "1"
+          },
+          {
+            "name": "STOP_CAUSE",
+            "value": "6"
+          },
+          {
+            "name": "CARD_NAME",
+            "value": "CARDTEST28 HUMO123"
+          },
+          {
+            "name": "CL_ROLE",
+            "value": "1"
+          },
+          {
+            "name": "BANK_C",
+            "value": "09"
+          },
+          {
+            "name": "GROUPC",
+            "value": "01"
+          },
+          {
+            "name": "CLIENT",
+            "value": "00001459"
+          },
+          {
+            "name": "CLIENT_B",
+            "value": "2"
+          },
+          {
+            "name": "ICO_EXPORT",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "item": [
+          {
+            "name": "CARD",
+            "value": "986009ZXJDNT9334"
+          },
+          {
+            "name": "CARD_TYPE",
+            "value": "01"
+          },
+          {
+            "name": "EXPIRY1",
+            "value": "2025-01-31T00:00:00"
+          },
+          {
+            "name": "BASE_SUPP",
+            "value": "1"
+          },
+          {
+            "name": "COND_SET",
+            "value": "001"
+          },
+          {
+            "name": "AGREEMENT_KEY",
+            "value": "6104"
+          },
+          {
+            "name": "RISK_LEVEL",
+            "value": "A"
+          },
+          {
+            "name": "STATUS1",
+            "value": "1"
+          },
+          {
+            "name": "STOP_CAUSE",
+            "value": "6"
+          },
+          {
+            "name": "CARD_NAME",
+            "value": "Saidakramov Avaz"
+          },
+          {
+            "name": "CL_ROLE",
+            "value": "1"
+          },
+          {
+            "name": "BANK_C",
+            "value": "09"
+          },
+          {
+            "name": "GROUPC",
+            "value": "01"
+          },
+          {
+            "name": "CLIENT",
+            "value": "00001459"
+          },
+          {
+            "name": "CLIENT_B",
+            "value": "2"
+          },
+          {
+            "name": "ICO_EXPORT",
+            "value": "1"
+          }
+        ]
+      }
+    ]
+  }
+}

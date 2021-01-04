@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "transId": "29896000200001200001",
+      "branch": "01200",
+      "id": "29896000200001200001",
+      "accBal": "29896",
+      "currency": "000",
+      "client": "00001200",
+      "idOrder": "001",
+      "name": "Прочее пассив",
+      "sgn": "P",
+      "bal": "B",
+      "signRegistr": 2,
+      "dt": 0,
+      "ct": 19900,
+      "dtTmp": 0,
+      "ctTmp": 119500,
+      "dateOpen": "2020-04-26T19:00:00.000+0000",
+      "accGroupId": 0,
+      "state": 2,
+      "kodErr": 0,
+      "fileName": 0,
+      "errorCode": "0",
+      "errorNote": "SUCCESS",
+      "ldate": "2020-04-26T19:00:00.000+0000",
+      "sin": 0,
+      "sout": 19900,
+      "sinTmp": 0,
+      "soutTmp": 119500
+    }
+  ]
+}

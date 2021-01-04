@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "family": "SIDOROV",
+      "firstName": "SIDR",
+      "birthday": "1988-05-23T17:00:00.000+0000",
+      "codeResident": "1",
+      "codeCountry": "860",
+      "codeGender": "2",
+      "codeNation": "01",
+      "postAddress": "Tahkent, Chilanzar-12/17/24",
+      "typeDocument": "6",
+      "passportSerial": "AC",
+      "passportNumber": "7654321",
+      "passportPlaceRegistration": "UZB IIV",
+      "passportDateRegistration": "2014-08-19T19:00:00.000+0000",
+      "transId": "99000070",
+      "errorCode": "0",
+      "errorNote": "SUCCESS"
+    }
+  ]
+}

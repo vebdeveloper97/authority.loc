@@ -1,0 +1,318 @@
+{
+  "row": {
+    "item": [
+      {
+        "name": "CARD",
+        "value": "986009HDEQJE5859"
+      },
+      {
+        "name": "CARD_SUFIKS",
+        "value": "EQJE585"
+      },
+      {
+        "name": "CARD_NUM",
+        "value": "98600901"
+      },
+      {
+        "name": "CARD_TYPE",
+        "value": "01"
+      },
+      {
+        "name": "BASE_SUPP",
+        "value": "1"
+      },
+      {
+        "name": "COND_SET",
+        "value": "001"
+      },
+      {
+        "name": "RISK_LEVEL",
+        "value": "A"
+      },
+      {
+        "name": "STATUS1",
+        "value": "1"
+      },
+      {
+        "name": "STATUS2",
+        "value": "1"
+      },
+      {
+        "name": "EXPIRY1",
+        "value": "2025-01-31T00:00:00"
+      },
+      {
+        "name": "EXPIRITY2",
+        "value": "2030-01-31T00:00:00"
+      },
+      {
+        "name": "REC_DATE",
+        "value": "2020-06-16T00:00:00"
+      },
+      {
+        "name": "RENEW",
+        "value": "6"
+      },
+      {
+        "name": "RENEW_DATE",
+        "value": "2020-06-23T00:00:00"
+      },
+      {
+        "name": "CARD_NAME",
+        "value": "CARDTEST28 HUMO123"
+      },
+      {
+        "name": "MC_NAME",
+        "value": "HUMO123/CARDTEST28"
+      },
+      {
+        "name": "M_NAME",
+        "value": ""
+      },
+      {
+        "name": "CVC1_1",
+        "value": ""
+      },
+      {
+        "name": "CVC1_2",
+        "value": ""
+      },
+      {
+        "name": "CVC2_1",
+        "value": ""
+      },
+      {
+        "name": "CVC2_2",
+        "value": ""
+      },
+      {
+        "name": "PVV_1",
+        "value": ""
+      },
+      {
+        "name": "PVV_2",
+        "value": ""
+      },
+      {
+        "name": "PVV2_1",
+        "value": ""
+      },
+      {
+        "name": "PVV2_2",
+        "value": ""
+      },
+      {
+        "name": "PIN_FLAG",
+        "value": "1"
+      },
+      {
+        "name": "BANK_C",
+        "value": "09"
+      },
+      {
+        "name": "CTIME",
+        "value": "2020-06-23T16:25:52"
+      },
+      {
+        "name": "GROUPC",
+        "value": "01"
+      },
+      {
+        "name": "CMPG_NAME",
+        "value": ""
+      },
+      {
+        "name": "STOP_CAUSE",
+        "value": "6"
+      },
+      {
+        "name": "CRD_HOLD_MSG",
+        "value": ""
+      },
+      {
+        "name": "U_COD9",
+        "value": ""
+      },
+      {
+        "name": "U_COD10",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD7",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD8",
+        "value": ""
+      },
+      {
+        "name": "RENEW1_DATE",
+        "value": "2020-06-16T00:00:00"
+      },
+      {
+        "name": "RENEWED_CARD",
+        "value": ""
+      },
+      {
+        "name": "F_NAMES",
+        "value": "CARDTEST28"
+      },
+      {
+        "name": "SURNAME",
+        "value": "HUMO123"
+      },
+      {
+        "name": "SEQUENCE_NR",
+        "value": "001"
+      },
+      {
+        "name": "LAST_SEQ_NR",
+        "value": ""
+      },
+      {
+        "name": "DESIGN_ID",
+        "value": ""
+      },
+      {
+        "name": "CHIP_APP_ID",
+        "value": "223"
+      },
+      {
+        "name": "DKI_0",
+        "value": ""
+      },
+      {
+        "name": "DKI_1",
+        "value": ""
+      },
+      {
+        "name": "DKI_2",
+        "value": ""
+      },
+      {
+        "name": "PVKI_1",
+        "value": ""
+      },
+      {
+        "name": "PVKI_2",
+        "value": ""
+      },
+      {
+        "name": "CARD_SERVICES_SET",
+        "value": ""
+      },
+      {
+        "name": "F_NAME1",
+        "value": ""
+      },
+      {
+        "name": "MIDLE_NAME",
+        "value": ""
+      },
+      {
+        "name": "RENEW_COMMENT",
+        "value": ""
+      },
+      {
+        "name": "RENEW_STATUS1",
+        "value": "1"
+      },
+      {
+        "name": "RENEW_STOP_CAUSE",
+        "value": "6"
+      },
+      {
+        "name": "LAST_ACTIVITY_DATE",
+        "value": ""
+      },
+      {
+        "name": "CSC4_1",
+        "value": ""
+      },
+      {
+        "name": "CSC5_1",
+        "value": ""
+      },
+      {
+        "name": "CSC4_2",
+        "value": ""
+      },
+      {
+        "name": "CSC5_2",
+        "value": ""
+      },
+      {
+        "name": "CLIENT_ID",
+        "value": "00001459"
+      },
+      {
+        "name": "CL_ROLE",
+        "value": "1"
+      },
+      {
+        "name": "STATUS_CHANGE_DATE",
+        "value": "2020-06-16T13:59:09"
+      },
+      {
+        "name": "HINT_QUESTION",
+        "value": ""
+      },
+      {
+        "name": "HINT_ANSWER",
+        "value": ""
+      },
+      {
+        "name": "PVV_COUNT_1",
+        "value": ""
+      },
+      {
+        "name": "PVV_COUNT_2",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD11",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD12",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD13",
+        "value": ""
+      },
+      {
+        "name": "U_FIELD14",
+        "value": ""
+      },
+      {
+        "name": "STOPLIST_TEXT",
+        "value": ""
+      },
+      {
+        "name": "COMBI_ID",
+        "value": ""
+      },
+      {
+        "name": "WALLET_TYPE",
+        "value": ""
+      },
+      {
+        "name": "PIN_PHONE",
+        "value": ""
+      },
+      {
+        "name": "PIN_E_MAIL",
+        "value": ""
+      },
+      {
+        "name": "ICO_EXPORT",
+        "value": ""
+      },
+      {
+        "name": "IDVALUE",
+        "value": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": "12",
+      "dep": "___",
+      "currency": "000",
+      "acc": "20206000599000001001",
+      "dateOpen": "01-jan-2020",
+      "sate": "2",
+      "stateName": "Активн?й",
+      "errorCode": "0",
+      "errorNote": "SUCCESS",
+      "sout": "1000000",
+      "sout224": "213.45"
+    }
+  ]
+}

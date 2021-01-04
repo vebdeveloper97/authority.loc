@@ -1,0 +1,1 @@
+<p class="alert alert-danger"><?=Yii::t('app', 'Buyurtma tasdiqlanmadi!')?></p>

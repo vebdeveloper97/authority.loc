@@ -1,0 +1,11 @@
+/.idea/
+/vendor/
+/runtime/
+app/config/*-local.php
+backend/config/*-local.php
+common/config/*-local.php
+console/config/*-local.php
+docker-compose-development.yml
+auth.json
+test.php
+.env

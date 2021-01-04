@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "family": "IVANOV",
+      "firstName": "IVAN",
+      "patronymic": "IVANOVICH",
+      "birthday": "1972-01-21 00:00:00.0",
+      "birthPalace": "Ташкент",
+      "codeCitizenship": "860",
+      "codeAdrRegion": "26",
+      "codeAdrDistr": "202",
+      "codeResident": "1",
+      "codeCountry": "860",
+      "codeGender": "1",
+      "codeNation": "01",
+      "postAddress": "Tashkent, Sag'bon 18",
+      "typeDocument": "6",
+      "passportSerial": "AA",
+      "passportNumber": "1234567",
+      "passportPlaceRegistration": "Tashkent Mirobod IIB",
+      "passportDateRegistration": "2014-12-31T19:00:00.000+0000",
+      "phoneHome": "+99871234567",
+      "phoneMobile": "998121234578",
+      "typeBlack": "0",
+      "blackCode": "0",
+      "errorCode": "0",
+      "errorNote": "SUCCESS"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "require": {
+    "php": ">= 7.4",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-simplexml": "*",
+    "yiisoft/yii2": "~2.0.0",
+    "yiisoft/yii2-redis": "~2.0.0",
+    "yiisoft/yii2-bootstrap": "^2.0",
+    "yiisoft/yii2-queue": "^2.3",
+    "php-amqplib/php-amqplib": "^2.12",
+    "tune/nibbd": "~1.0.0",
+    "tune/playmobile": "~1.0",
+    "tune/billmaster": "~1.0",
+    "tune/soliq": "~1.0",
+    "tune/ebp": "~1.0",
+    "firebase/php-jwt": "^5.2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "yiisoft/yii2-gii": "^2.2"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://gitlab.com/api/v4/group/9137742/-/packages/composer/packages.json"
+    },
+    {
+      "type": "composer",
+      "url": "https://gitlab.com/api/v4/group/9281618/-/packages/composer/packages.json"
+    }
+  ]
+}
