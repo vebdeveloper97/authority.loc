@@ -4,7 +4,10 @@
 namespace app\models\patterns\interfaces;
 
 
-class AbstractProductA
-{
+interface AbstractProductA{
+
+    public function usefulFunctionA(): string;
+
+    public function anotherUsefulFunctionA(AbstractProductA $collaborator): string;
 
 }

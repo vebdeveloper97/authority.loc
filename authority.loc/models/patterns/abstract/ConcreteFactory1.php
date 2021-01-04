@@ -1,7 +1,20 @@
 <?php
 
+namespace app\models\abstarct\interfaces;
 
-class ConcreteFactory1
+
+use app\models\patterns\interfaces\AbstractFactory;
+use app\models\patterns\interfaces\AbstractProductB;
+
+class ConcreteFactory1 implements AbstractFactory
 {
+    public function createProductA(): AbstractProductA
+    {
 
+    }
+
+    public function createProductB(): AbstractProductB
+    {
+
+    }
 }

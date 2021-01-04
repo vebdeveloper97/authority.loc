@@ -1,5 +1,7 @@
 <template>
-$END$
+  <div class="addNotes">
+    salom
+  </div>
 </template>
 
 <script>

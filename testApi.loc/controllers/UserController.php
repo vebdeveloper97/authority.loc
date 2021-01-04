@@ -4,7 +4,9 @@
 namespace app\controllers;
 
 
-class UserController
-{
+use app\models\rest\ProductDocument;
 
+class UserController extends BaseApiController
+{
+    public $modelClass = ProductDocument::class;
 }

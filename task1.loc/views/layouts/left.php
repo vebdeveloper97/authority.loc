@@ -25,40 +25,58 @@
             </div>
         </form>
         <!-- /.search form -->
-
+        <?php
+            $controller = Yii::$app->controller->id;
+            $action = Yii::$app->controller->action->id;
+        ?>
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'Some tools',
-                        'icon' => 'share',
-                        'url' => '#',
+                        'label' => Yii::t('app', 'Settings'),
+                        'icon' => 'cogs',
+                        'visible' => Yii::$app->user->can('settings'),
                         'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
                             [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
+                                'label' => Yii::t('app', 'Users'),
+                                'icon' => 'users',
+                                'active' => $controller == 'user',
+                                'url' => ['user/index']
                             ],
-                        ],
+                            [
+                                'label' => Yii::t('app', 'Access'),
+                                'icon' => 'universal-access',
+                                'items' => [
+                                    [
+                                        'label' => Yii::t('app', 'Auth Item'),
+                                        'icon' => 'align-justify',
+                                        'active' => $controller == 'auth-item',
+                                        'url' => ['auth-item/index']
+                                    ],
+                                    [
+                                        'label' => Yii::t('app', 'Auth Assignment'),
+                                        'icon' => 'align-justify',
+                                        'active' => $controller == 'auth-assignment',
+                                        'url' => ['auth-assignment/index']
+                                    ],
+                                    [
+                                        'label' => Yii::t('app', 'Auth Item Child'),
+                                        'icon' => 'align-justify',
+                                        'active' => $controller == 'auth-item-child',
+                                        'url' => ['auth-item-child/index']
+                                    ]
+                                ]
+                            ],
+
+                        ]
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Profile'),
+                        'icon' => 'user',
+                        'active' => $controller == 'profile',
+                        'visible' => Yii::$app->user->can('simple'),
+                        'url' => ['profile/index']
                     ],
                 ],
             ]

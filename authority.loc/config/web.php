@@ -28,6 +28,7 @@ $config = [
         ]
     ],
     'components' => [
+
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
             'dateFormat' => 'd.m.Y',
@@ -104,6 +105,16 @@ $config = [
             'rules' => [
                 '<module:\w+>/<controller:\w+>/<action(\w|-)+>/<id:\d+>' => '<module>/<controller>/<action>',
                 '<controller:\w+>/<action\w:+>' => '<controller>/<action>',
+                /*[
+                    'pattern' => 'sites',
+                    'route' => 'site/index',
+                    'suffix' => '.json',
+                ],
+                [
+                    'pattern' => 'contacts',
+                    'route' => 'site/contact',
+                    'suffix' => '.json',
+                ],*/
             ],
         ],
     ],

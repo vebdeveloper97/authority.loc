@@ -1,10 +1,14 @@
 <?php
+    namespace app\components;
 
+    use yii\base\Component;
+    use yii\base\Event;
 
-namespace app\components;
+    class Foo extends Component{
+        const EVENT_HELLO = 'Hello';
 
-
-class Foo
-{
-
-}
+        public function bar()
+        {
+            $this->trigger(self::EVENT_HELLO);
+        }
+    }

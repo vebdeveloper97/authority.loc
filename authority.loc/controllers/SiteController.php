@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Events\Foo;
 use app\models\Reference;
 use app\modules\admin\models\AboutUz;
 use app\modules\admin\models\CategoriesUz;
@@ -13,6 +14,7 @@ use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -183,6 +185,8 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('contactFormSubmitted');
             return $this->refresh();
         }
+//        \Yii::$app->response->redirect('http://authority.loc/uz/site/index', 200)->send();
+
         return $this->render('contact', [
             'model' => $model,
         ]);

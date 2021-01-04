@@ -25,39 +25,59 @@
             </div>
         </form>
         <!-- /.search form -->
-
+        <?php
+            $controller = Yii::$app->controller->id;
+            $action = Yii::$app->controller->action->id;
+            $slug = Yii::$app->request->get('slug');
+        ?>
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'Some tools',
+                        'label' => 'Do\'kon',
                         'icon' => 'share',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
                             [
-                                'label' => 'Level One',
-                                'icon' => 'circle-o',
-                                'url' => '#',
+                                'label' => 'Maxsulot qabul qilish',
+                                'icon' => 'cart-plus',
+                                'url' => ['product-document/incoming/index'],
+                                'active' =>
+                                    $controller == 'product-document'
+                                    && $slug == 'incoming',
+                            ],
+                            [
+                                'label' => 'Maxsulot sotish',
+                                'icon' => 'cart-arrow-down',
+                                'url' => ['product-document/selling/index'],
+                                'active' =>
+                                    $controller == 'product-document'
+                                    && $slug == 'selling',
+                            ],
+                            [
+                                'label' => 'Hisobot',
+                                'icon' => 'bars',
                                 'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'circle-o', 'url' => '#',],
                                     [
-                                        'label' => 'Level Two',
-                                        'icon' => 'circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'circle-o', 'url' => '#',],
-                                        ],
+                                        'label' => 'Maxsulot kirim hisoboti',
+                                        'url' => ['product-document/report_incoming/index'],
+                                        'active' => $slug == 'report_incoming',
+                                    ],
+                                    [
+                                        'label' => 'Maxsulot chiqim hisoboti',
+                                        'url' => ['product-document/report_selling/index'],
+                                        'active' => $slug == 'report_selling',
                                     ],
                                 ],
                             ],
+                            [
+                                'label' => 'Maxsulot',
+                                'icon' => 'plus',
+                                'url' => ['product/index'],
+                                'active' =>
+                                    $controller == 'product'
+                                ],
                         ],
                     ],
                 ],

@@ -26,6 +26,7 @@
         </form>
         <!-- /.search form -->
 
+
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
@@ -33,7 +34,10 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    [
+                        'label' => 'Rbac',
+                        'url' => ['/rbac/default/index'],
+                    ],
                     [
                         'label' => 'Some tools',
                         'icon' => 'share',
